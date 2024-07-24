@@ -3,7 +3,7 @@ package repository
 import "time"
 
 type Customers struct {
-	CustomerID  int       `gorm:"column:customer_id"`
+	CustomerID  int       `gorm:"column:customer_id;primaryKey;autoIncrement"`
 	Name        string    `gorm:"column:name"`
 	DateOfBirth time.Time `gorm:"column:date_of_birth"`
 	City        string    `gorm:"column:city"`

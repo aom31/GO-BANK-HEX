@@ -18,17 +18,17 @@ run-go:
 # Construct the DSN from environment variables
 DB_DSN=postgres://$(DB_USER):$(DB_PASSWORD)@$(DB_HOST):$(DB_PORT)/$(DB_NAME)?sslmode=disable
 
-nameMigrateFile = "v1_add_table_customers"
+nameMigrateFile = "v1_add_table_accounts"
 create-migrate-file:
 	migrate create -ext sql -dir storage/migrations -seq $(nameMigrateFile)
 
 dev-up:
 	migrate -database $(DB_DSN) -path storage/migrations up  
 
-version_down_step =1
+version_down_step =2
 dev-down:
 	migrate -database $(DB_DSN) -path storage/migrations down  $(version_down_step)
 
-version = 1
+version = 2
 force-migrate-version:
 	migrate -path storage/migrations -database $(DB_DSN) force $(version)
