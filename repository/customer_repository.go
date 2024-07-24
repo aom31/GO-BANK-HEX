@@ -17,8 +17,9 @@ func NewCustomerRepositoryDB(db *gorm.DB) CustomerRepository {
 func (repo customerRepositoryDB) GetAll() ([]Customers, error) {
 
 	result := []Customers{}
+	query := "SELECT * FROM customers"
 
-	gormResult := repo.db.Find(&result)
+	gormResult := repo.db.Raw(query).Find(&result)
 	if gormResult.Error != nil {
 		return nil, gormResult.Error
 	}

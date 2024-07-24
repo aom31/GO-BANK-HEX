@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/aom31/golang-dev-bank-hex/repository"
 	"github.com/aom31/golang-dev-bank-hex/storage"
 )
 
@@ -13,11 +14,11 @@ func main() {
 		panic(err)
 	}
 
-	// customerRepository := repository.NewCustomerRepositoryDB(db)
-	// customers, err := customerRepository.GetAll()
-	// if err != nil {
-	// 	panic(err)
-	// }
+	customerRepository := repository.NewCustomerRepositoryDB(db)
+	customers, err := customerRepository.GetAll()
+	if err != nil {
+		panic(err)
+	}
 
-	fmt.Println(db)
+	fmt.Println(customers)
 }
